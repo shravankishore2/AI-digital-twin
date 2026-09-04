@@ -1,0 +1,44 @@
+{
+  "rows_total": 122040,
+  "rows_by_split": {
+    "train": 85428,
+    "val": 18306,
+    "test": 18306
+  },
+  "rows_by_label": {
+    "healthy": 27000,
+    "misfire": 8640,
+    "plug_fouling": 8640,
+    "valve_leak": 8640,
+    "injector_clog": 8640,
+    "injector_leak": 8640,
+    "sensor_drift": 8640,
+    "sensor_dropout": 8640,
+    "detonation": 2160,
+    "ignition_timing": 2160,
+    "fuel_pump": 2160,
+    "fuel_contam": 2160,
+    "oil_pressure_loss": 2160,
+    "oil_degradation": 2160,
+    "coolant_loss": 2160,
+    "radiator_block": 2160,
+    "bearing_wear": 2160,
+    "prop_imbalance": 2160,
+    "gearbox_wear": 2160,
+    "turbo_wastegate": 2160,
+    "induction_leak": 2160,
+    "alternator_fail": 2160,
+    "regulator_fault": 2160,
+    "oilpress_sensor": 2160
+  },
+  "healthy_fraction": 0.2212,
+  "operating_points": 60,
+  "wear_levels": [
+    0,
+    0.15,
+    0.32
+  ],
+  "fault_configs": 44,
+  "runs": 8100,
+  "seconds": 62.9
+}

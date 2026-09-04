@@ -1,0 +1,10 @@
+fastapi>=0.115
+uvicorn[standard]>=0.32
+websockets>=13.1
+pydantic>=2.9
+# add your model runtime, e.g.:
+# scikit-learn>=1.5
+# joblib>=1.4
+# onnxruntime>=1.19
+# python-can>=4.4      # SocketCAN acquisition
+# cantools>=39.4       # DBC decoding

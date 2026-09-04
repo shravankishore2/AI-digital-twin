@@ -1,0 +1,356 @@
+{
+  "labels": [
+    {
+      "idx": 0,
+      "id": "healthy",
+      "label": "Healthy",
+      "category": "none",
+      "per_cylinder": false
+    },
+    {
+      "idx": 1,
+      "id": "misfire",
+      "label": "Cylinder Misfire",
+      "category": "combustion",
+      "per_cylinder": true,
+      "ramp_s": 12,
+      "description": "Intermittent combustion failure on one cylinder. Charge passes unburned; that cylinder stops making torque.",
+      "signature": [
+        "EGT collapse on affected cylinder",
+        "RPM ripple / rough running",
+        "0.5-order vibration rise",
+        "Shaft power deficit vs commanded MAP"
+      ]
+    },
+    {
+      "idx": 2,
+      "id": "plug_fouling",
+      "label": "Spark Plug Fouling",
+      "category": "combustion",
+      "per_cylinder": true,
+      "ramp_s": 45,
+      "description": "Carbon/lead deposits shunt the spark gap. Combustion becomes late and partial before it fails outright.",
+      "signature": [
+        "Slow EGT decay on one cylinder",
+        "Rising cycle-to-cycle variability",
+        "Mild vibration rise",
+        "Fuel flow up for same power"
+      ]
+    },
+    {
+      "idx": 3,
+      "id": "detonation",
+      "label": "Detonation / Combustion Instability",
+      "category": "combustion",
+      "per_cylinder": false,
+      "ramp_s": 20,
+      "description": "Uncontrolled end-gas auto-ignition. Pressure spikes hammer the piston crown and dump heat into the head.",
+      "signature": [
+        "Knock index above threshold",
+        "CHT rising fast on all cylinders",
+        "High-frequency vibration band energy",
+        "Correlated with high MAP + lean mixture"
+      ]
+    },
+    {
+      "idx": 4,
+      "id": "ignition_timing",
+      "label": "Ignition Timing Drift",
+      "category": "combustion",
+      "per_cylinder": false,
+      "ramp_s": 35,
+      "description": "Crank/cam sensor phase error walks the ignition map retarded. Burn completes in the exhaust port.",
+      "signature": [
+        "Ignition advance below scheduled map",
+        "EGT elevated across all cylinders",
+        "Power deficit at constant fuel flow",
+        "CHT trending up"
+      ]
+    },
+    {
+      "idx": 5,
+      "id": "valve_leak",
+      "label": "Exhaust Valve Leakage / Compression Loss",
+      "category": "combustion",
+      "per_cylinder": true,
+      "ramp_s": 60,
+      "description": "Burnt seat lets combustion gas escape during compression. Cylinder loses trapped mass and torque.",
+      "signature": [
+        "EGT elevated on one cylinder",
+        "Compression index falling",
+        "Power deficit not explained by fuel",
+        "CHT asymmetry across bank"
+      ]
+    },
+    {
+      "idx": 6,
+      "id": "injector_clog",
+      "label": "Injector Clogging",
+      "category": "fuel",
+      "per_cylinder": true,
+      "ramp_s": 40,
+      "description": "Deposits restrict the injector orifice. That cylinder runs progressively leaner than the ECU believes.",
+      "signature": [
+        "EGT climbing on one cylinder",
+        "Lambda leaner than commanded",
+        "Injector duration compensating upward",
+        "CHT rise on affected cylinder"
+      ]
+    },
+    {
+      "idx": 7,
+      "id": "injector_leak",
+      "label": "Injector Stuck Open / Leaking",
+      "category": "fuel",
+      "per_cylinder": true,
+      "ramp_s": 25,
+      "description": "Injector fails to seat. Raw fuel enters continuously - that cylinder floods and quenches.",
+      "signature": [
+        "Fuel flow high for commanded power",
+        "Lambda rich, EGT dropping on that cylinder",
+        "Bore washing → future ring wear",
+        "Rough idle / vibration"
+      ]
+    },
+    {
+      "idx": 8,
+      "id": "fuel_pump",
+      "label": "Fuel Pump Degradation / Starvation",
+      "category": "fuel",
+      "per_cylinder": false,
+      "ramp_s": 30,
+      "description": "Pump output falls below rail demand. The engine leans out first at high power, where flow demand peaks.",
+      "signature": [
+        "Fuel rail pressure decaying",
+        "Lean excursion under high MAP",
+        "EGT rise across all cylinders",
+        "Power rolloff at full throttle"
+      ]
+    },
+    {
+      "idx": 9,
+      "id": "fuel_contam",
+      "label": "Fuel Contamination / Water Ingress",
+      "category": "fuel",
+      "per_cylinder": false,
+      "ramp_s": 22,
+      "description": "Water or low-octane fuel in the rail. Combustion becomes erratic and knock margin disappears.",
+      "signature": [
+        "Erratic lambda oscillation",
+        "Intermittent EGT dropouts on multiple cylinders",
+        "Knock index elevated",
+        "Random RPM roughness"
+      ]
+    },
+    {
+      "idx": 10,
+      "id": "oil_pressure_loss",
+      "label": "Oil Pressure Loss",
+      "category": "lubrication",
+      "per_cylinder": false,
+      "ramp_s": 18,
+      "description": "Pump wear, a leak or a blocked pickup. Bearing hydrodynamic film collapses - this is the fastest path to engine loss.",
+      "signature": [
+        "Oil pressure below minimum",
+        "Oil temperature rising (loss of heat carry-away)",
+        "Bearing vibration signature emerging",
+        "Time-to-seizure critical"
+      ]
+    },
+    {
+      "idx": 11,
+      "id": "oil_degradation",
+      "label": "Oil Degradation / Viscosity Breakdown",
+      "category": "lubrication",
+      "per_cylinder": false,
+      "ramp_s": 70,
+      "description": "Thermal breakdown and shear thin the oil. Pressure sags at temperature while wear metals climb.",
+      "signature": [
+        "Oil pressure low only when hot",
+        "Oil temp elevated at constant power",
+        "Slow broadband vibration creep",
+        "Pressure-vs-RPM slope degraded"
+      ]
+    },
+    {
+      "idx": 12,
+      "id": "coolant_loss",
+      "label": "Coolant Loss / Cooling Degradation",
+      "category": "lubrication",
+      "per_cylinder": false,
+      "ramp_s": 40,
+      "description": "Coolant level or pump flow falls. Head rejection capacity drops and CHT walks up on every cylinder.",
+      "signature": [
+        "Coolant temperature rising",
+        "CHT rising in lockstep on all cylinders",
+        "Oil temperature following",
+        "Knock margin eroding"
+      ]
+    },
+    {
+      "idx": 13,
+      "id": "radiator_block",
+      "label": "Radiator / Oil Cooler Duct Blockage",
+      "category": "lubrication",
+      "per_cylinder": false,
+      "ramp_s": 50,
+      "description": "Debris or icing restricts cooling airflow. Rejection falls off with airspeed dependence intact.",
+      "signature": [
+        "Coolant AND oil temperature both rising",
+        "Delta grows with power setting",
+        "No coolant pressure anomaly",
+        "CHT spread stays symmetric"
+      ]
+    },
+    {
+      "idx": 14,
+      "id": "bearing_wear",
+      "label": "Main / Rod Bearing Wear",
+      "category": "mechanical",
+      "per_cylinder": false,
+      "ramp_s": 65,
+      "description": "Babbitt loss increases running clearance. Broadband vibration rises and oil pressure bleeds off through the clearance.",
+      "signature": [
+        "Broadband vibration energy rising",
+        "Oil pressure sagging at constant RPM",
+        "Bearing-order harmonics in spectrum",
+        "Oil temperature slightly up"
+      ]
+    },
+    {
+      "idx": 15,
+      "id": "prop_imbalance",
+      "label": "Propeller Imbalance / Blade Damage",
+      "category": "mechanical",
+      "per_cylinder": false,
+      "ramp_s": 8,
+      "description": "Mass or aerodynamic imbalance in the propeller disc. A clean 1-per-rev excitation transmitted through the gearbox.",
+      "signature": [
+        "Dominant 1P (prop-order) vibration peak",
+        "Amplitude scales with prop RPM²",
+        "No thermal or combustion signature",
+        "Gearbox loading elevated"
+      ]
+    },
+    {
+      "idx": 16,
+      "id": "gearbox_wear",
+      "label": "Reduction Gearbox Wear",
+      "category": "mechanical",
+      "per_cylinder": false,
+      "ramp_s": 70,
+      "description": "Gear-tooth pitting and slipper-clutch wear. Energy appears at the gear-mesh frequency, not at engine order.",
+      "signature": [
+        "Gear-mesh band energy rising",
+        "Vibration uncorrelated with combustion events",
+        "Oil temperature creeping up",
+        "Prop/engine RPM ratio jitter"
+      ]
+    },
+    {
+      "idx": 17,
+      "id": "turbo_wastegate",
+      "label": "Turbocharger / Wastegate Fault",
+      "category": "induction",
+      "per_cylinder": false,
+      "ramp_s": 25,
+      "description": "Wastegate stuck open or turbine efficiency lost. Boost collapses - and it collapses hardest at altitude.",
+      "signature": [
+        "MAP below scheduled boost for throttle",
+        "Power deficit growing with altitude",
+        "EGT elevated (poor scavenging)",
+        "Turbo speed / boost-error residual high"
+      ]
+    },
+    {
+      "idx": 18,
+      "id": "induction_leak",
+      "label": "Induction Leak / Filter Clogging",
+      "category": "induction",
+      "per_cylinder": false,
+      "ramp_s": 45,
+      "description": "Unmetered air past the sensor, or a restricted filter starving the compressor. Either way MAP no longer matches the fuel schedule.",
+      "signature": [
+        "MAP deficit vs throttle command",
+        "Lambda lean at low power (leak) or rich at high (restriction)",
+        "Volumetric-efficiency residual out of band",
+        "EGT drift across all cylinders"
+      ]
+    },
+    {
+      "idx": 19,
+      "id": "alternator_fail",
+      "label": "Alternator Failure / Battery Discharge",
+      "category": "electrical",
+      "per_cylinder": false,
+      "ramp_s": 15,
+      "description": "Generator output lost. The bus runs on battery alone - ECU, injectors and ignition are on a countdown.",
+      "signature": [
+        "Alternator current negative (net discharge)",
+        "Bus voltage decaying monotonically",
+        "Battery state-of-charge falling",
+        "ECU brownout risk on time horizon"
+      ]
+    },
+    {
+      "idx": 20,
+      "id": "regulator_fault",
+      "label": "Voltage Regulator Fault / Overcharge",
+      "category": "electrical",
+      "per_cylinder": false,
+      "ramp_s": 20,
+      "description": "Regulator loses control of field current. Bus voltage climbs and cooks the battery and the ECU rails.",
+      "signature": [
+        "Bus voltage above upper limit",
+        "Alternator current high and unstable",
+        "Voltage ripple increasing",
+        "Battery thermal risk"
+      ]
+    },
+    {
+      "idx": 21,
+      "id": "sensor_drift",
+      "label": "CHT/EGT Sensor Drift",
+      "category": "sensors",
+      "per_cylinder": true,
+      "ramp_s": 55,
+      "description": "Thermocouple junction degradation. The *indication* walks away while the engine itself is healthy - the classic false-alarm generator.",
+      "signature": [
+        "Indicated CHT/EGT diverging from physics-model prediction",
+        "No corresponding power, fuel or vibration change",
+        "Residual grows monotonically, not with load",
+        "Cross-channel consistency check fails"
+      ]
+    },
+    {
+      "idx": 22,
+      "id": "sensor_dropout",
+      "label": "Sensor Dropout / Open Circuit",
+      "category": "sensors",
+      "per_cylinder": true,
+      "ramp_s": 3,
+      "description": "Open or shorted sensor circuit. The channel goes invalid - the twin must keep flying on its model estimate.",
+      "signature": [
+        "Channel invalid / out-of-range",
+        "Zero variance on a live engine",
+        "Model estimate substituted for indication",
+        "Redundancy voting triggered"
+      ]
+    },
+    {
+      "idx": 23,
+      "id": "oilpress_sensor",
+      "label": "Oil Pressure Sensor Fault",
+      "category": "sensors",
+      "per_cylinder": false,
+      "ramp_s": 6,
+      "description": "Transducer reads low while true pressure is normal. Distinguishing this from a real oil emergency is the whole point of a twin.",
+      "signature": [
+        "Indicated oil pressure low",
+        "Oil temperature NORMAL (a real loss would heat it)",
+        "No bearing vibration signature",
+        "Model residual isolates the sensor, not the pump"
+      ]
+    }
+  ]
+}

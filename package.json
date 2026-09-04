@@ -1,0 +1,25 @@
+{
+  "name": "aero-twin",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "AI-Enabled Real-Time Digital Twin for Aero Piston Engines in MALE UAVs (SIH PS 26054, DRDO)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "data": "node model_data/generate.mjs"
+  },
+  "dependencies": {
+    "@react-three/drei": "^9.117.3",
+    "@react-three/fiber": "^8.17.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "three": "^0.169.0",
+    "zustand": "^5.0.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
